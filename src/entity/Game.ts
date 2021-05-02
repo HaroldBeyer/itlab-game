@@ -5,24 +5,28 @@ import { WrongLetter } from "./WrongLetter";
 @Entity()
 export class Game {
 
+    constructor(word) {
+        this.word = word;
+    }
+
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
     word: string;
 
-    @Column()
-    errors: number;
+    @Column('int', { default: 0 })
+    errors: number = 0;
 
-    @Column()
-    finished: boolean;
+    @Column('boolean', { default: false })
+    finished: boolean = false;
 
-    @Column()
-    date: Date;
+    @Column('date', { default: new Date() })
+    date: Date = new Date();
 
-    //ms
-    @Column()
-    remainingTime: number;
+    //ms - 5 minutes
+    @Column('int', { default: 300000 })
+    remainingTime: number = 300000;
 
     @OneToMany(type => HitLetter, hitLetter => hitLetter.letter)
     hitLetters: HitLetter[];
