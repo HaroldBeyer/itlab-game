@@ -12,7 +12,6 @@ export class WrongLetter {
     })
     letter: string;
 
-
     @ManyToOne(type => Game, game => game.wrongLetters)
     game: Game;
 
