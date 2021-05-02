@@ -24,9 +24,9 @@ export class Game {
     @Column('date', { default: new Date() })
     date: Date = new Date();
 
-    //ms - 5 minutes
-    @Column('int', { default: 300000 })
-    remainingTime: number = 300000;
+    //ms - 100 seconds
+    @Column('int', { default: 100000 })
+    remainingTime: number = 100000;
 
     @OneToMany(type => HitLetter, hitLetter => hitLetter.letter)
     hitLetters: HitLetter[];
