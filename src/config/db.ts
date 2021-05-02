@@ -6,7 +6,7 @@ export const connectServerWithDB = async () => {
 
     process.on("SIGINT", () => {
         connection.close().then(() => {
-            console.log(`Connection closed`);
+            console.log(`Connection with DB has been closed`);
         }).catch((err) => {
             console.log(`Error while trying to close connection: ${err}`);
         });

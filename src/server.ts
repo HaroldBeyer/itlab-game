@@ -1,25 +1,13 @@
-import "reflect-metadata";
-import { createConnection } from "typeorm";
-import { Game } from "./entity/Game";
+import { app } from './app';
 
-createConnection().then(async connection => {
+const PORT = 3000;
 
-    console.log("Inserting a new user into the database...");
-    const game = new Game();
-    game.word = "Timber";
-    game.remainingTime = 3600;
-    game.date = new Date();
-    game.finished = false;
-    game.wrongLetters = [];
-    game.hitLetters = [];
-    game.errors = 0;
-    await connection.manager.save(game);
-    console.log("Saved a new game with id: " + game.id);
+const server = app.listen(PORT, () => console.log(`App listening at port ${PORT}`));
 
-    console.log("Loading games from the database...");
-    const games = await connection.manager.find(Game);
-    console.log("Loaded games: ", games);
-
-    console.log("Here you can setup and run express/koa/any other framework.");
-
-}).catch(error => console.log(error));
+/**
+ * As soon as the process ends, so does our app
+ */
+process.on("SIGINT", () => {
+    server.close();
+    console.log(`The app has been closed`);
+});
