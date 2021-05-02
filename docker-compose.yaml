@@ -1,0 +1,12 @@
+version: '3'
+services: 
+    db:
+        image: 'postgres:latest'
+        environment: 
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_USER: postgres
+            POSTGRES_DB: itlab
+        volumes:
+            - ./pgdata:/opt/Ambiente/Docker/storage
+        ports: 
+            - "5431:5432"

@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import {createConnection} from "typeorm";
+import { createConnection } from "typeorm";
 import { Game } from "./entity/Game";
 
 createConnection().then(async connection => {
@@ -12,6 +12,7 @@ createConnection().then(async connection => {
     game.finished = false;
     game.wrongLetters = [];
     game.hitLetters = [];
+    game.errors = 0;
     await connection.manager.save(game);
     console.log("Saved a new game with id: " + game.id);
 
