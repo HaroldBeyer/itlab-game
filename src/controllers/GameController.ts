@@ -7,5 +7,24 @@ export class GameController {
         return getManager().save(game);
     }
 
-    
+    async getAll() {
+        return getManager().find(Game);
+    }
+
+    //TODO
+    async newWord() {
+
+    }
+
+    //TODO
+    async checkTime() {
+
+    }
+
+    //TODO
+    async hitLetter() {
+
+    }
+
+
 }

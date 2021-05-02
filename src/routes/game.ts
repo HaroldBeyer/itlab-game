@@ -14,3 +14,7 @@ routerGame.post('/', async (req, res) => {
     const savedGame = await gameCtrl.save(game);
     res.json(savedGame);
 });
+
+routerGame.get('/', async (req, res) => {
+    res.json( await gameCtrl.getAll());
+});
