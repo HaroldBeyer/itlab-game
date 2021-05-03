@@ -16,5 +16,16 @@ routerGame.post('/', async (req, res) => {
 });
 
 routerGame.get('/', async (req, res) => {
-    res.json( await gameCtrl.getAll());
+    res.json(await gameCtrl.getAll());
+});
+
+routerGame.get('/:gameId', async (req, res) => {
+    const gameId = parseInt(req.params.gameId);
+    res.json(await gameCtrl.getGame(gameId));
+});
+
+routerGame.post('/:gameId', async (req, res) => {
+    const gameId = parseInt(req.params.gameId);
+    const { letter } = req.body;
+    res.json(await gameCtrl.hitLetter(gameId, letter));
 });
