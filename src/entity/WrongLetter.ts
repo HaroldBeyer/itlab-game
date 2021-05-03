@@ -4,9 +4,10 @@ import { Game } from "./Game";
 @Entity()
 export class WrongLetter {
 
-    constructor(letter: string, game: Game) {
+    constructor(letter: string, game?: Game) {
         this.letter = letter;
-        this.game = game;
+        if (game)
+            this.game = game;
     }
 
     @PrimaryGeneratedColumn()

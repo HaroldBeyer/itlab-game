@@ -11,7 +11,7 @@ const gameCtrl = new GameController();
 routerGame.post('/', async (req, res) => {
     const data = req.body;
     const game = new Game(data.word);
-    const savedGame = await gameCtrl.save(game);
+    const savedGame = await gameCtrl.start(game);
     res.json(savedGame);
 });
 
@@ -24,8 +24,19 @@ routerGame.get('/:gameId', async (req, res) => {
     res.json(await gameCtrl.getGame(gameId));
 });
 
-routerGame.post('/:gameId', async (req, res) => {
+routerGame.post('/play/:gameId', async (req, res) => {
     const gameId = parseInt(req.params.gameId);
     const { letter } = req.body;
     res.json(await gameCtrl.hitLetter(gameId, letter));
+});
+
+routerGame.post('/save/:gameId', async (req, res) => {
+    const gameId = parseInt(req.params.gameId);
+    const params = req.body;
+    res.json(await gameCtrl.save(gameId, params));
+});
+
+routerGame.get('/newWord/:gameId', async (req, res) => {
+    const gameId = parseInt(req.params.gameId);
+    res.json(await gameCtrl.newWord(gameId));
 });

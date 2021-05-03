@@ -22,17 +22,20 @@ export class Game {
     finished: boolean = false;
 
     @Column('date', { default: new Date() })
-    date: Date = new Date();
+    createdAt: Date = new Date();
 
     //ms - 100 seconds
     @Column('int', { default: 100000 })
     remainingTime: number = 100000;
 
-    @OneToMany(type => HitLetter, hitLetter => hitLetter.game)
+    @Column('date', {default: new Date()})
+    updatedAt: Date = new Date();
+
+    @OneToMany(type => HitLetter, hitLetter => hitLetter.game, {cascade: true})
     @JoinColumn()
     hitLetters: HitLetter[];
 
-    @OneToMany(type => WrongLetter, wrongLetter => wrongLetter.game)
+    @OneToMany(type => WrongLetter, wrongLetter => wrongLetter.game, {cascade: true})
     @JoinColumn()
     wrongLetters: WrongLetter[];
 }
