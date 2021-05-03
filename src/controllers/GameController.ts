@@ -22,6 +22,8 @@ export class GameController {
         });
         await getManager().update(Game, gameId, game);
 
+        return { statusCode: 200, message: "Updated" };
+
     }
 
     async getAll() {
