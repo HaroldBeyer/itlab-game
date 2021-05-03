@@ -4,6 +4,11 @@ import { Game } from "./Game";
 @Entity()
 export class HitLetter {
 
+    constructor(letter: string, game: Game) {
+        this.letter = letter;
+        this.game = game;
+    }
+
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -12,6 +17,6 @@ export class HitLetter {
     })
     letter: string;
 
-    @ManyToOne(type => Game, game => game.hitLetters)
+    @ManyToOne(() => Game, game =>  game.hitLetters)
     game: Game;
 }

@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, JoinColumn } from "typeorm";
 import { HitLetter } from "./HitLetter";
 import { WrongLetter } from "./WrongLetter";
 
@@ -28,9 +28,11 @@ export class Game {
     @Column('int', { default: 100000 })
     remainingTime: number = 100000;
 
-    @OneToMany(type => HitLetter, hitLetter => hitLetter.letter)
+    @OneToMany(type => HitLetter, hitLetter => hitLetter.game)
+    @JoinColumn()
     hitLetters: HitLetter[];
 
-    @OneToMany(type => WrongLetter, wrongLetter => wrongLetter.letter)
+    @OneToMany(type => WrongLetter, wrongLetter => wrongLetter.game)
+    @JoinColumn()
     wrongLetters: WrongLetter[];
 }
