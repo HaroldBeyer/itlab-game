@@ -1,7 +1,6 @@
-# Awesome Project Build with TypeORM
+# Awesome Hangman game for ITLab, made by Haroldo! 
 
 Steps to run this project:
 
-1. Run `npm i` command
-2. Start the postgresql db with docker using `docker-compose up -d`
-3. Run `npm start` command
+1. Start the application with docker using `docker-compose up -d`
+2. Try to play with the scripts located in the file `ITLab.postman_collection.json`

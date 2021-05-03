@@ -7,6 +7,14 @@ services:
             POSTGRES_USER: postgres
             POSTGRES_DB: itlab
         volumes:
-            - ./pgdata:/opt/Ambiente/Docker/storage
+            - ./pgdata:/var/lib/postgresql/data
         ports: 
             - "5431:5432"
+    app:
+        container_name: itlab-game
+        restart: always
+        build: .
+        ports: 
+            - "3000:3000"
+        depends_on: 
+            - db
