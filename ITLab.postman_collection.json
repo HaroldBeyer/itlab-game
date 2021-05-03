@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "192661df-7bc0-4727-ad27-0929b3d8ea5d",
+		"name": "ITLab",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Insert game",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"word\": \"xbox\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/game",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"game"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save game",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"word\": \"xbox\",\n    \"finished\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/game/save/13",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"game",
+						"save",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAll games",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/game",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"game"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get gameData",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/game/13",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"game",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert letter",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"letter\": \"n\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/game/play/13",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"game",
+						"play",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate new word",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"letter\": \"n\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/game/newWord/13",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"game",
+						"newWord",
+						"13"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000"
+		}
+	]
+}
